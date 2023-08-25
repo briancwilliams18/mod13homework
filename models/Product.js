@@ -51,4 +51,16 @@ Product.init(
   }
 );
 
+Product.associate = models => {
+  // Product belongs to Category
+  Product.belongsTo(models.Category, {
+    foreignKey: 'category_id'
+  });
+
+  // Product belongs to many Tag models through ProductTag
+  Product.belongsToMany(models.Tag, {
+    through: models.ProductTag,
+    foreignKey: 'product_id'
+  });
+};
 module.exports = Product;

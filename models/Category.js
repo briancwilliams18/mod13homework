@@ -26,4 +26,11 @@ Category.init(
   }
 );
 
+Category.associate = models => {
+  // Category has many Product models
+  Category.hasMany(models.Product, {
+    foreignKey: 'category_id'
+  });
+};
+
 module.exports = Category;
